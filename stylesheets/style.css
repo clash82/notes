@@ -1,0 +1,47 @@
+* {
+    font-family: "Open Sans", Tahoma;
+}
+
+main code {
+    font-family: "Courier";
+    white-space: pre-wrap;
+    background: #000;
+    color: #ccc;
+    padding: 5px 10px;
+    line-height: 28px;
+    display: inline-block;
+    word-wrap: break-word;
+    border-radius: 0;
+}
+
+main a:link,
+footer a:link {
+    color: #118B74;
+    text-decoration: none;
+}
+
+main a:visited,
+footer a:visited {
+    color: #999;
+}
+
+main a:hover,
+footer a:hover {
+    color: #115314;
+}
+
+ul {
+    list-style-type: square;
+}
+
+main h2 {
+    color: #118B74;
+}
+
+footer {
+    padding: 10px 20px;
+}
+
+main {
+    margin: 80px 0 10px 0;
+}

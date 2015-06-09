@@ -1,0 +1,23 @@
+- name: Git
+  link: /git/
+
+- name: MySQL
+  link: /mysql/
+
+- name: Vagrant
+  link: /vagrant/
+
+- name: OS X
+  link: /osx/
+
+- name: Linux
+  link: /linux/
+
+- name: eZ Platform (PHP)
+  link: /ezplatform-php/
+
+- name: eZ Platform (templates)
+  link: /ezplatform-templates/
+
+- name: eZ Platform (console)
+  link: /ezplatform-console/
