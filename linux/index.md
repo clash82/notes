@@ -18,3 +18,7 @@ Ctrl-D = kill current session`
 ## Clear directory: ##
 
 `rm -rf %path%`
+
+## Find file: ##
+
+`find %path% -name "%filename%"`
