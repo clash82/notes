@@ -86,3 +86,7 @@ git fetch -v origin
 git rebase origin/master
 (remove conflicts in your files)
 git rebase --continue`
+
+## Show differences: ##
+
+`git diff --word-diff`
