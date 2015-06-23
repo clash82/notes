@@ -5,8 +5,16 @@ title: eZ Publish / eZ Platform (templates)
 
 ## Get content name: ##
 
-{% raw %}`{{ ez_content_name(content) }}`{% endraw %}
+{% highlight smarty %}
+{% raw %}
+{{ ez_content_name(content) }}
+{% endraw %}
+{% endhighlight %}
 
 ## Get field value: ##
 
-{% raw %}`{{ ez_field_value(content, '%field_name%') }}`{% endraw %}
+{% highlight smarty %}
+{% raw %}
+{{ ez_field_value(content, '%field_name%') }}
+{% endraw %}
+{% endhighlight %}

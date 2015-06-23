@@ -5,88 +5,128 @@ title: Git
 
 ## Rebase the old branch against the master branch: ##
 
-`git fetch origin
-git rebase origin/master`
+{% highlight bash %}
+git fetch origin
+git rebase origin/master
+{% endhighlight %}
 
 ## Show operation log: ##
 
-`git reflog`
+{% highlight bash %}
+git reflog
+{% endhighlight %}
 
 ## Show branches already merged with master: ##
 
-`git branch --merged`
+{% highlight bash %}
+git branch --merged
+{% endhighlight %}
 
 ## Show all branches including remotes: ##
 
-`git branch -avv`
+{% highlight bash %}
+git branch -avv
+{% endhighlight %}
 
 ## Start tracking specified branch: ##
 
-`git branch %branch_name% upstream/master`
+{% highlight bash %}
+git branch %branch_name% upstream/master
+{% endhighlight %}
 
 ## Create and checkout new branch: ##
 
-`git checkout -b %branch_name%`
+{% highlight bash %}
+git checkout -b %branch_name%
+{% endhighlight %}
 
 ## Setup global user attributes: ##
 
-`git config --global user.name "%your_name%"
-git config --global user.email "%your_email_address%"`
+{% highlight bash %}
+git config --global user.name "%your_name%"
+git config --global user.email "%your_email_address%"
+{% endhighlight %}
 
 ## Create new tag: ##
 
-`git tag %tag_name%`
+{% highlight bash %}
+git tag %tag_name%
+{% endhighlight %}
 
 ## Push tags to repo: ##
 
-`git push --tags`
+{% highlight bash %}
+git push --tags
+{% endhighlight %}
 
 ## Fetch all changes from repo (remove unexisting branches): ##
 
-`git fetch --all -vp`
+{% highlight bash %}
+git fetch --all -vp
+{% endhighlight %}
 
 ## Show all branches: ##
 
-`git branch`
+{% highlight bash %}
+git branch
+{% endhighlight %}
 
 ## Create a new branch: ##
 
-`git branch %branch_name%`
+{% highlight bash %}
+git branch %branch_name%
+{% endhighlight %}
 
 ## Change to another branch: ##
 
-`git checkout %branch_name%`
+{% highlight bash %}
+git checkout %branch_name%
+{% endhighlight %}
 
 ## Remove files from tracking stage: ##
 
-`git rm --cached %file%`
+{% highlight bash %}
+git rm --cached %file%
+{% endhighlight %}
 
 ## Show repo statistics: ##
 
-`git diff --cached -stat`
+{% highlight bash %}
+git diff --cached -stat
+{% endhighlight %}
 
 ## Show modified files: ##
 
-`git diff --cached --numstat | wc -l`
+{% highlight bash %}
+git diff --cached --numstat | wc -l
+{% endhighlight %}
 
 ## Clear unstaged files (beware): ##
 
-`git clean -f`
+{% highlight bash %}
+git clean -f
+{% endhighlight %}
 
 ## Remove files already removed from commit: ##
 
-`git checkout %commit_hash% %file1% %file2% ...
+{% highlight bash %}
+git checkout %commit_hash% %file1% %file2% ...
 git add %file1% %file2% ...
-git commit —ammend`
+git commit —ammend
+{% endhighlight %}
 
 ## Resolve a merge conflicts: ##
 
-`git fetch -v fork
+{% highlight bash %}
+git fetch -v fork
 git fetch -v origin
 git rebase origin/master
-(remove conflicts in your files)
-git rebase --continue`
+# remove conflicts in your files
+git rebase --continue
+{% endhighlight %}
 
 ## Show differences: ##
 
-`git diff --word-diff`
+{% highlight bash %}
+git diff --word-diff
+{% endhighlight %}

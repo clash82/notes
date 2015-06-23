@@ -5,20 +5,28 @@ title: Linux
 
 ## [tmux] attach to existing sessions: ##
 
-`tmux attach`
+{% highlight bash %}
+tmux attach
+{% endhighlight %}
 
 ## [tmux] keyboard shortcuts: ##
 
-`Ctrl+B + C = new session
+{% highlight bash %}
+Ctrl+B + C = new session
 Ctrl+B + N = next session
 Ctrl+B + W = session list
 Ctrl-B + 1..9 = switch to specified session
-Ctrl-D = kill current session`
+Ctrl-D = kill current session
+{% endhighlight %}
 
 ## Clear directory: ##
 
-`rm -rf %path%`
+{% highlight bash %}
+rm -rf %path%
+{% endhighlight %}
 
 ## Find file: ##
 
-`find %path% -name "%filename%"`
+{% highlight bash %}
+find %path% -name "%filename%"
+{% endhighlight %}

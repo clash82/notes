@@ -5,22 +5,32 @@ title: eZ Publish / eZ Platform (console)
 
 ## Clear cache in production environment: ##
 
-`php ezpublihs/console cache:clear -e=prod`
+{% highlight bash %}
+php ezpublihs/console cache:clear -e=prod
+{% endhighlight %}
 
 ## Dump assets: ##
 
-`php ezpublish/console assetic:dump`
+{% highlight bash %}
+php ezpublish/console assetic:dump
+{% endhighlight %}
 
 ## Start assets watching: ##
 
-`php ezpublish/console assetic:watch`
+{% highlight bash %}
+php ezpublish/console assetic:watch
+{% endhighlight %}
 
 ## Run built-in PHP server: ##
 
-`php ezpublish/console server:run`
+{% highlight bash %}
+php ezpublish/console server:run
+{% endhighlight %}
 
 ## Update eZ Platform using Composer: ##
 
-`git checkout master
+{% highlight bash %}
+git checkout master
 git pull
-composer update`
+composer update
+{% endhighlight %}

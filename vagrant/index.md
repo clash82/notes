@@ -5,16 +5,24 @@ title: Vagrant
 
 ## Login to shell:  ##
 
-`vagrant ssh`
+{% highlight bash %}
+vagrant ssh
+{% endhighlight %}
 
 ## Start Vagrant: ##
 
-`vagrant up`
+{% highlight bash %}
+vagrant up
+{% endhighlight %}
 
 ## Stop Vagrant and clear data: ##
 
-`vagrant destroy`
+{% highlight bash %}
+vagrant destroy
+{% endhighlight %}
 
 ## Stop Vagrant but leave data: ##
 
-`vagrant halt`
+{% highlight bash %}
+vagrant halt
+{% endhighlight %}

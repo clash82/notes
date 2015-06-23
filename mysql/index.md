@@ -5,16 +5,25 @@ title: MySQL
 
 ## Dump database to file: ##
 
-`/usr/local/mysql-5.6.22-osx10.8-x86_64/bin/mysqldump -u %username% --skip-add-drop-table --no-create-info --no-create-db %database_name% > %filename.sql%`
+{% highlight bash %}
+/usr/local/mysql-5.6.22-osx10.8-x86_64/bin/mysqldump -u %username% --skip-add-drop-table --no-create-info --no-create-db %database_name% > %filename.sql%
+{% endhighlight %}
 
 ## Login to shell: ##
-`mysql -u %username% -p`
+
+{% highlight bash %}
+mysql -u %username% -p
+{% endhighlight %}
 
 ## Change password for database: ##
 
-`SET PASSWORD FOR '%username%'@'%hostname%' = PASSWORD('%new_password%');`
+{% highlight mysql %}
+SET PASSWORD FOR '%username%'@'%hostname%' = PASSWORD('%new_password%');
+{% endhighlight %}
 
 ## Import sql file from shell: ##
 
-`use %database%
-source %filename%;`
+{% highlight mysql %}
+use %database%
+source %filename%;
+{% endhighlight %}

@@ -2,18 +2,6 @@
     font-family: "Open Sans", Tahoma;
 }
 
-main code {
-    font-family: "Courier";
-    white-space: pre-wrap;
-    background: #000;
-    color: #ccc;
-    padding: 5px 10px;
-    line-height: 28px;
-    display: inline-block;
-    word-wrap: break-word;
-    border-radius: 0;
-}
-
 main a:link,
 footer a:link {
     color: #118B74;
