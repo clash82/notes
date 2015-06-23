@@ -35,6 +35,14 @@
                                 {% endfor %}
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">links<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% for link in site.data.links %}
+                                    <li><a href="//{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                     </ul>
     
                     <ul class="nav navbar-nav navbar-right">
