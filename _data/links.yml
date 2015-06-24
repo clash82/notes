@@ -6,3 +6,6 @@
 
 - name: eZ Publish 5 search cheatsheet
   url: share.ez.no/blogs/thiago-campos-viana/ez-publish-5-tip-search-cheat-sheet
+
+- name: eZ Publish 5 Twig helpers (vars)
+  url: doc.ez.no/display/EZP/Twig+Helper
