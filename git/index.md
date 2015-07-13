@@ -149,3 +149,12 @@ pick f392171 Added new feature X
 squash ba9dd9a Added new elements to page design
 squash df71a27 Updated CSS for new elements
 {% endhighlight %}
+
+## Rename branch: ##
+
+{% highlight bash %}
+git branch -m %old_name% %new_name%
+
+# if you want to rename the current branch, you can simply do:
+git branch -m %new_name%
+{% endhighlight %}
