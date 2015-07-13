@@ -130,3 +130,22 @@ git rebase --continue
 {% highlight bash %}
 git diff --word-diff
 {% endhighlight %}
+
+## Squash 3 commits into one: ##
+
+{% highlight bash %}
+git rebase -i HEAD~3
+
+# use this if you want to squash initial commit too:
+git rebase -i --root
+
+# this will open up your editor with the following:
+pick f392171 Added new feature X
+pick ba9dd9a Added new elements to page design
+pick df71a27 Updated CSS for new elements
+
+# change your files to this:
+pick f392171 Added new feature X
+squash ba9dd9a Added new elements to page design
+squash df71a27 Updated CSS for new elements
+{% endhighlight %}
