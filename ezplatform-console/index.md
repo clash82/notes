@@ -34,3 +34,9 @@ git checkout master
 git pull
 composer update
 {% endhighlight %}
+
+## Install legacy assets: ##
+
+{% highlight bash %}
+php ezpublish/console ezpublish:legacy:assets_install --relative --symlink web
+{% endhighlight %}
