@@ -27,3 +27,10 @@ SET PASSWORD FOR '%username%'@'%hostname%' = PASSWORD('%new_password%');
 use %database%
 source %filename%;
 {% endhighlight %}
+
+## Reset auto-increment value: ##
+
+{% highlight mysql %}
+ALTER TABLE %table_name% AUTO_INCREMENT=%value%
+{% endhighlight %}
+
