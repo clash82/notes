@@ -43,3 +43,14 @@ $content = $contentService->loadContent(68);
 $location = $locationService->loadLocations($content->contentInfo);
 $uri = $urlAlias->listLocationAliases($location['0'], false, 'eng-GB');
 {% endhighlight %}
+
+## Get ContentType identifier based on contentId: ##
+
+{% highlight php startinline %}
+$contentService = $this->get('ezpublish.api.service.content');
+$contentTypeService = $this->get('ezpublish.get.service.content_type');
+
+$contentTypeIdentifier = $contentTypeService->loadContentType(
+    $contentService->loadContent($contentId)->contentInfo->contentTypeId
+)->identifier;
+{% endhighlight %}
