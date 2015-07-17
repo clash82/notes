@@ -7,6 +7,10 @@ title: Git
 
 {% highlight bash %}
 git fetch origin
+
+# or if you want to fetch all branches:
+git fetch -pv --all
+
 git rebase origin/master
 {% endhighlight %}
 
