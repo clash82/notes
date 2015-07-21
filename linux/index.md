@@ -17,6 +17,8 @@ Ctrl+B + N = next session
 Ctrl+B + W = session list
 Ctrl-B + 1..9 = switch to specified session
 Ctrl-D = kill current session
+Ctrl+B + Shift+5 = split screen
+Ctrl+B + Left/Right = move between screens
 {% endhighlight %}
 
 ## Clear directory: ##
