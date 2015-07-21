@@ -9,6 +9,12 @@ title: OS X
 defaults write com.apple.finder AppleShowAllFiles NO
 {% endhighlight %}
 
+## Start Apache on system startup: ##
+
+{% highlight bash %}
+sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+{% endhighlight %}
+
 ## Keyboard shortcuts: ##
 
 {% highlight bash %}
