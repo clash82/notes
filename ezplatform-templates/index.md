@@ -42,3 +42,11 @@ title: eZ Publish / eZ Platform (templates)
 {{ render(controller('ez_content:viewLocation', {'locationId': %locationId%, 'viewType': 'full'})) }}
 {% endraw %}
 {% endhighlight %}
+
+## Display Twig version: ##
+
+{% highlight smarty %}
+{% raw %}
+{{ constant('Twig_Environment::VERSION') }}
+{% endraw %}
+{% endhighlight %}
