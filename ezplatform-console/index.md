@@ -40,3 +40,9 @@ composer update
 {% highlight bash %}
 php ezpublish/console ezpublish:legacy:assets_install --relative --symlink web
 {% endhighlight %}
+
+## Dump semantic configuration for specified reference: ##
+
+{% highlight bash %}
+php ezpublish/console config:dump-reference %reference_name%
+{% endhighlight %}
