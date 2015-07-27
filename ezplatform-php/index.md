@@ -54,3 +54,16 @@ $contentTypeIdentifier = $contentTypeService->loadContentType(
     $contentService->loadContent($contentId)->contentInfo->contentTypeId
 )->identifier;
 {% endhighlight %}
+
+## Get content data using sudo: ##
+
+{% highlight php startinline %}
+$repository = $this->get('ezpublish.api.repository');
+$contentService = $this->get('ezpublish.api.service.content');
+
+$result = $repository->sudo(
+    function () use ($id, $contentService) {
+        return $contentService->loadContentInfo($id);
+    }
+);
+{% endhighlight %}
