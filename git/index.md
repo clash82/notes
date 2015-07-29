@@ -20,6 +20,13 @@ git rebase origin/master
 git reflog
 {% endhighlight %}
 
+## Checkout file from origin/master: ##
+
+{% highlight bash %}
+# you can replace origin/master with branch/tag/commit 
+git checkout origin/master -- %file%
+{% endhighlight %}
+
 ## Show branches already merged with master: ##
 
 {% highlight bash %}
