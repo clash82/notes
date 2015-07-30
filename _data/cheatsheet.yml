@@ -24,3 +24,6 @@
 
 - name: eZ Platform (MacOS X clean install)
   link: /ezplatform-installation-osx/
+
+- name: PHP tools
+  link: /php-tools/
