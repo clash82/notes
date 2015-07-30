@@ -41,3 +41,9 @@ echo 'echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" >&3' | DYLD_PRINT_TO_FILE=/etc/sud
 echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
 . ~/.bash_profile
 {% endhighlight %}
+
+## Install file (e.g. composer.phar) globally: ##
+
+{% highlight bash %}
+sudo mv %file% /usr/local/bin/%file%
+{% endhighlight %}
