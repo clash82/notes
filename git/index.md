@@ -169,3 +169,9 @@ git branch -m %old_name% %new_name%
 # if you want to rename the current branch, you can simply do:
 git branch -m %new_name%
 {% endhighlight %}
+
+## Undo last commit: ##
+
+{% highlight bash %}
+git reset --soft HEAD~1
+{% endhighlight %}
