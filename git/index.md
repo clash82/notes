@@ -175,3 +175,9 @@ git branch -m %new_name%
 {% highlight bash %}
 git reset --soft HEAD~1
 {% endhighlight %}
+
+## Restore file from origin/master: ##
+
+{% highlight bash %}
+git checkout origin/master %file%
+{% endhighlight %}
