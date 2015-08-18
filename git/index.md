@@ -181,3 +181,9 @@ git reset --soft HEAD~1
 {% highlight bash %}
 git checkout origin/master %file%
 {% endhighlight %}
+
+## Assign credentials to repository: ##
+
+{% highlight bash %}
+git config remote.origin.url https://%username%:%password%@github.com/some/repository.git
+{% endhighlight %}
