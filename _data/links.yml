@@ -9,3 +9,6 @@
 
 - name: eZ Publish 5 Twig helpers (vars)
   url: doc.ez.no/display/EZP/Twig+Helper
+
+- name: eZ Publish 3.x - 5.x legacy template helpers
+  url: doc.ez.no/eZ-Publish/Technical-manual/3.6/Reference/Template-operators
