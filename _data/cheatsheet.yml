@@ -22,6 +22,9 @@
 - name: eZ Platform (console)
   link: /ezplatform-console/
 
+- name: eZ Platform (known issues)
+  link: /ezplatform-issues/
+
 - name: eZ Platform (MacOS X clean install)
   link: /ezplatform-installation-osx/
 
