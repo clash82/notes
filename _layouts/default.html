@@ -58,6 +58,21 @@
             {{ content }}
         </main>
 
+        {% if page.title != '' %}
+            <div class="container comments">
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_shortname = 'clash82';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        {% endif %}
+
         <footer class="container">
             {% if page.url == '/index.html' %}
                 &copy; 2015 <a href="//toborek.info" target="_blank"> Rafał Toborek</a> (<a href="https://github.com/clash82/clash82.github.io">GitHub</a>)
