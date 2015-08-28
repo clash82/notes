@@ -3,10 +3,10 @@ layout: default
 title: MySQL
 ---
 
-## Dump database to file: ##
+## Dump database to file (format used in eZ Publish/Platform DemoBundle): ##
 
 {% highlight bash %}
-/usr/local/mysql-5.6.22-osx10.8-x86_64/bin/mysqldump -u %username% --skip-add-drop-table --no-create-info --no-create-db %database_name% > %filename.sql%
+/usr/local/mysql/bin/mysqldump -u %username% --skip-add-drop-table --no-create-info --no-create-db --extended-insert=FALSE %database_name% > %filename.sql%
 {% endhighlight %}
 
 ## Login to shell: ##
