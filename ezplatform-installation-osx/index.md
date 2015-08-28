@@ -36,10 +36,16 @@ Create new `php.ini` file base on defaults:
 sudo cp /private/etc/php.ini.default /private/etc/php.ini
 {% endhighlight %}
 
-Edit `php.ini` and uncomment/modify following lines:
+Edit `php.ini`:
+
+{% highlight bash %}
+sudo vi /private/etc/php.ini
+{% endhighlight %}
+
+and uncomment/modify following lines:
 
 {% highlight ini %}
-date.timezone = Europe/Warsaw
+date.timezone = "Europe/Warsaw"
 {% endhighlight %}
 
 (...)
@@ -76,9 +82,16 @@ LoadModule rewrite_module libexec/apache2/mod_rewrite.so
 
 (...)
 
+Find and comment this line:
+
 {% highlight apacheconf %}
-Include /private/etc/apache2/extra/httpd-vhosts.conf
-Include /private/etc/apache2/users/*.conf # add this line
+# Include /private/etc/apache2/extra/httpd-vhosts.conf
+{% endhighlight %}
+
+add below:
+
+{% highlight apacheconf %}
+Include /private/etc/apache2/users/*.conf
 {% endhighlight %}
 
 Change permissions for virtual hosts storage directory (775):
@@ -87,8 +100,6 @@ Change permissions for virtual hosts storage directory (775):
 sudo chmod -R 775 /private/etc/apache2/users
 sudo chmod 775 /private/etc/apache2
 {% endhighlight %}
-
-Remove unused vhosts configuration under `/private/etc/apache2/httpd-vhosts.conf`.
 
 Edit `hosts` file:
 
@@ -172,10 +183,12 @@ zend_extension=opcache.so
 
 ## 8. Install eZ Publish / eZ Platform: ##
 
-Go to the `~/Documents/workspace/ez1.lh` directory:
+Go to the `~/Documents/workspace/ez1.lh` directory and set up directory permissions:
 
 {% highlight bash %}
-cd ~/Documents/workspace/ez1.lh
+chmod 775 ../ez1.lh
+chmod 775 ../../workspace
+chmod 775 ../../../Documents
 {% endhighlight %}
 
 Clone eZ Publish / Platform repository:
@@ -187,7 +200,7 @@ git clone https://github.com/ezsystems/ezplatform.git .
 Copy virtual host template:
 
 {% highlight bash %}
-cp doc/apache2/vhost.template /private/etc/apache2/users/ez1.lh.conf
+sudo cp doc/apache2/vhost.template /private/etc/apache2/users/ez1.lh.conf
 {% endhighlight %}
 
 Edit new virtual host:
@@ -198,9 +211,9 @@ sudo vi /private/etc/apache2/users/ez1.lh.conf
 
 Modify virtual host file based on dev environment (or use template below):
 
-*Replace `---USER_ID---` variable with current user ID. Use `whoami` command to get effective user ID of currently logged user.*
+*Replace `---USER_ID---` variable (used on line 5 and 8) with current user ID. Use `whoami` command to get effective user ID of currently logged user. If you want to use default virtual host template (delivered with eZ Publish/Platform package) all you have to do is setup lines 1, 2, 3, 5, 8 and 17.*
 
-{% highlight apacheconf %}
+{% highlight apacheconf linenos %}
 <VirtualHost *:80>
     ServerName ez1.lh
     ServerAlias ez1.lh
@@ -254,6 +267,7 @@ Modify virtual host file based on dev environment (or use template below):
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
         # Needed for ci testing, remove in prod.
+        RewriteCond %{ENV:ENVIRONMENT} "behat"
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
@@ -379,6 +393,8 @@ Install required dependencies using Composer:
 composer install
 {% endhighlight %}
 
+When Composer asks you for token you must login to your GitHub account and edit your profile. Go to the `Personal access tokens` link and `Generate new token` with default settings. Be aware that token will be shown only once, so do not refresh page until you paste token into Composer prompt. This operation is performed only once when you install eZ Publish/Platform for the first time.
+
 Change directory permissions:
 
 {% highlight bash %}
@@ -393,3 +409,4 @@ php ezpublish/console ezplatform:install demo
 {% endhighlight %}
 
 If everything goes right, you should see your page under <a href="http://ez1.lh" target="_blank">http://ez1.lh</a>.
+
