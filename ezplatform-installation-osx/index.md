@@ -132,7 +132,7 @@ mv composer.phar /usr/local/bin/composer
 Create new database (`ez1`):
 
 {% highlight bash %}
-mysql -u root -e 'create database ez1;'
+/usr/local/mysql/bin/mysql -u root -e 'create database ez1;'
 {% endhighlight %}
 
 ## 6. Install Brew package manager: ##
