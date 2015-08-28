@@ -448,6 +448,12 @@ Add below:
 LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 {% endhighlight %}
 
+Install `intl` extension for PHP 5.6:
+
+{% highlight bash %}
+brew install php56-intl
+{% endhighlight %}
+
 Restart Apache:
 
 {% highlight bash %}
