@@ -410,3 +410,46 @@ php ezpublish/console ezplatform:install demo
 
 If everything goes right, you should see your page under <a href="http://ez1.lh" target="_blank">http://ez1.lh</a>.
 
+## 9. Optional: Install PHP 5.6 with opcache: ##
+
+{% highlight bash %}
+brew install -v homebrew/php/php56
+chmod -R ug+w $(brew --prefix php56)/lib/php
+brew install -v php56-opcache
+{% endhighlight %}
+
+Add proper `date.timezone` settings:
+
+{% highlight bash %}
+sudo vi /usr/local/etc/php/5.6/php.ini
+{% endhighlight %}
+
+Uncomment and modify:
+
+{% highlight ini %}
+date.timezone = "Europe/Warsaw"
+{% endhighlight %}
+
+Change default PHP parser used by Apache:
+
+{% highlight bash %}
+sudo vi /private/etc/apache2/httpd.conf
+{% endhighlight %}
+
+Find and comment following line:
+
+{% highlight apacheconf %}
+# LoadModule php5_module libexec/apache2/libphp5.so
+{% endhighlight %}
+
+Add below:
+
+{% highlight apacheconf %}
+LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
+{% endhighlight %}
+
+Restart Apache:
+
+{% highlight bash %}
+sudo apachectl restart
+{% endhighlight %}
