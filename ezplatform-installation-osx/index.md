@@ -423,6 +423,14 @@ Uncomment and modify:
 date.timezone = "Europe/Warsaw"
 {% endhighlight %}
 
+(...)
+
+Increase `memory_limit` value for eZ Publish / Platform:
+
+{% highlight ini %}
+memory_limit = 4G
+{% endhighlight %}
+
 Change default PHP parser used by Apache:
 
 {% highlight bash %}
