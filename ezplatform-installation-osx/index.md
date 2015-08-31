@@ -9,13 +9,6 @@ This guide allows you to prepare environment required to install eZ Publish / Pl
 
 Download and install MySQL from the <a href="http://dev.mysql.com/downloads/mysql/" target="_blank">official website</a> (eg. mysql-5.6.26-osx10.9-x86_64.dmg).
 
-{% highlight bash %}
-cd
-vi .bash_profile
-export PATH="/usr/local/mysql/bin:$PATH"
-/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-{% endhighlight %}
-
 ## 2. Setup PHP: ##
 
 Edit Apache 2 configuration file:
