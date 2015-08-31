@@ -431,6 +431,14 @@ Increase `memory_limit` value for eZ Publish / Platform:
 memory_limit = 4G
 {% endhighlight %}
 
+(...)
+
+Disable errors showing:
+
+{% highlight ini %}
+display_errors = Off
+{% endhighlight %}
+
 Change default PHP parser used by Apache:
 
 {% highlight bash %}
