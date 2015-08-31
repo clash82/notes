@@ -391,8 +391,9 @@ When Composer asks you for token you must login to your GitHub account and edit 
 Change directory permissions:
 
 {% highlight bash %}
-sudo chmod -R 777 ezpublish
-sudo chmod -R 777 web
+rm -rf ezpublish/cache/* ezpublish/logs/* ezpublish/sessions/*
+sudo chmod +a "_www allow delete,write,append,file_inherit,directory_inherit" ezpublish/{cache,logs,config,sessions} web
+sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/{cache,logs,config,sessions} web
 {% endhighlight %}
 
 Install eZ Publish / Platform:
