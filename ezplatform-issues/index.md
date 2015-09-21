@@ -16,3 +16,31 @@ protected function initializeContainer() {
      }
 }
 {% endhighlight %}
+
+## PHP Fatal error:  Cannot redeclare eZUpdateDebugSettings() (previously declared in ../ezpublish_legacy/kernel/classes/ezscript.php:1225) in .../ezpublish_legacy/kernel/private/classes/global_functions.php on line 109 ##
+
+Add this line in `../vendor/ezsystems/legacy-bridge/mvc/kernel/Loader.php` file:
+
+{% highlight php startinline %}
+(...)
+
+public function buildLegacyKernelHandlerCLI()
+{
+    $legacyRootDir = $this->legacyRootDir;
+    $webrootDir = $this->webrootDir;
+    $eventDispatcher = $this->eventDispatcher;
+    $container = $this->container;
+    $that = $this;
+
+    return function () use ($legacyRootDir, $container, $eventDispatcher, $that) {
+        if (!$that->getCLIHandler()) {
+            $currentDir = getcwd();
+            chdir($legacyRootDir);
+     
+            // add new line below   
+            require_once 'kernel/private/classes/global_functions.php';
+    
+            $legacyParameters = new ParameterBag($container->getParameter('ezpublish_legacy.kernel_handler.cli.options'));
+
+(...)
+{% endhighlight %}
