@@ -47,3 +47,9 @@ echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
 {% highlight bash %}
 sudo mv %file% /usr/local/bin/%file%
 {% endhighlight %}
+
+## Create symbolic link: ##
+
+{% highlight bash %}
+ln -s %file_path% %link_path%
+{% endhighlight %}
