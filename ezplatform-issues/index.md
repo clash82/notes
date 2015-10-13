@@ -44,3 +44,11 @@ public function buildLegacyKernelHandlerCLI()
 
 (...)
 {% endhighlight %}
+
+## The target directory "web" does not exist ##
+
+This issue occur when using legacy upon eZ Publish 5 and trying to execute `assets:install` command. The simplest solution is to provide full path to `web` directory:
+
+{% highlight bash startinline %}
+php ezpublish/console asssets:install ~/Documents/%path%/web --symlink
+{% endhighlight %}
