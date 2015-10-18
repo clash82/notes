@@ -32,3 +32,9 @@ rm -rf %path%
 {% highlight bash %}
 find %path% -name "%filename%"
 {% endhighlight %}
+
+## Get size of element on disk: ##
+
+{% highlight bash %}
+du -hs %path%
+{% endhighlight %}
