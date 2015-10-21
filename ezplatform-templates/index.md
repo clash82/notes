@@ -50,3 +50,11 @@ title: eZ Publish / eZ Platform (templates)
 {{ constant('Twig_Environment::VERSION') }}
 {% endraw %}
 {% endhighlight %}
+
+## Get siteaccess name: ##
+
+{% highlight smarty %}
+{% raw %}
+{{ app.request.attributes.get('siteaccess').name }}
+{% endraw %}
+{% endhighlight %}
