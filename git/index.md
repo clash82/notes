@@ -187,3 +187,9 @@ git checkout origin/master %file%
 {% highlight bash %}
 git config remote.origin.url https://%username%:%password%@github.com/some/repository.git
 {% endhighlight %}
+
+## Add parts of file to the index: ##
+
+{% highlight bash %}
+git add -p
+{% endhighlight %}
