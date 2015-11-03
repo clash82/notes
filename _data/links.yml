@@ -1,6 +1,9 @@
 - name: Symfony cheatsheet
   url: www.symfony2cheatsheet.com
 
+- name: Symfony CLI cheatsheet
+  url: overapi.com/static/cs/symfony2-console_en_v1-1.pdf
+
 - name: eZ Publish 5 cheatsheet
   url: ez5.pheelit.fr/eng/
 
