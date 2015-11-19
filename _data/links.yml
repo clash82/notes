@@ -15,3 +15,6 @@
 
 - name: eZ Publish 3.x - 5.x legacy template helpers
   url: doc.ez.no/eZ-Publish/Technical-manual/3.6/Reference/Template-operators
+
+- name: eZ Publish 5 API documentation
+  url: apidoc.ez.no
