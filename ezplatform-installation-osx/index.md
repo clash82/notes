@@ -1,9 +1,9 @@
 ---
 layout: default
-title: eZ Publish / eZ Platform (MacOS X clean install)
+title: eZ Platform (MacOS X clean install)
 ---
 
-This guide allows you to prepare environment required to install eZ Publish / Platform on MacOS X Yosemite.
+This guide allows you to prepare environment required to install `eZ Platform v1` on `MacOS X Yosemite` (this guide is incompatible with `eZ Publish Platform 5.4` and all `eZ Platform beta releases`).
 
 ## 1. Install MySQL: ##
 
@@ -47,7 +47,7 @@ date.timezone = "Europe/Warsaw"
 pdo_mysql.default_socket  = /tmp/mysql.sock
 {% endhighlight %}
 
-Increase `memory_limit` value for eZ Publish / Platform:
+Increase `memory_limit` value for eZ Platform:
 
 {% highlight ini %}
 memory_limit = 4G
@@ -120,7 +120,7 @@ mkdir -p /usr/local/bin
 mv composer.phar /usr/local/bin/composer
 {% endhighlight %}
 
-## 5. Create a new database for eZ Publish / Platform: ##
+## 5. Create a new database for eZ Platform: ##
 
 Create new database (`ez1`):
 
@@ -134,7 +134,7 @@ Create new database (`ez1`):
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 {% endhighlight %}
 
-## 7. Install additional requirements for eZ Publish / Platform: ##
+## 7. Install additional requirements for eZ Platform: ##
 
 Install `PEAR/PECL` extension:
 
@@ -174,7 +174,7 @@ Enable `opcache` extension for PHP (suggested, but not required) by adding:
 zend_extension=opcache.so
 {% endhighlight %}
 
-## 8. Install eZ Publish / eZ Platform: ##
+## 8. Install eZ Platform: ##
 
 Go to the `~/Documents/workspace/ez1.lh` directory and set up directory permissions:
 
@@ -184,10 +184,16 @@ chmod 775 ../../workspace
 chmod 775 ../../../Documents
 {% endhighlight %}
 
-Clone eZ Publish / Platform repository:
+Clone eZ Platform repository:
 
 {% highlight bash %}
 git clone https://github.com/ezsystems/ezplatform.git .
+{% endhighlight %}
+
+Checkout latest stable version (eg. v1.0.1) or skip this step to use latest dev release from master branch. To see the list of all available tags type `git tag`.
+
+{% highlight bash %}
+git checkout v1.0.1
 {% endhighlight %}
 
 Copy virtual host template:
@@ -204,127 +210,110 @@ sudo vi /private/etc/apache2/users/ez1.lh.conf
 
 Modify virtual host file based on dev environment (or use template below):
 
-*Replace `---USER_ID---` variable (used on line 5 and 8) with current user ID. Use `whoami` command to get effective user ID of currently logged user. If you want to use default virtual host template (delivered with eZ Publish/Platform package) all you have to do is setup lines 1, 2, 3, 5, 8 and 17.*
+*Replace `---USER_ID---` variable (used on line 10 and 17) with your current user ID. Use `whoami` command to get effective user ID of currently logged user. If you want to use default virtual host template (delivered with eZ Platform package) all you have to do is setup lines 7, 8, 9, 10, 17, 25 and 33.*
 
 {% highlight apacheconf linenos %}
+# Official VirtualHost configuration for Apache 2.x
+# Note: This is meant to be tailored for your needs, expires headers might for instance not work for dev.
+# Params: %IP_ADDRESS%, %PORT%, %HOST%, %HOST_ALIAS%, %BASEDIR%, %ENV% and %PROXY%
+
+# NameVirtualHost %IP_ADDRESS%
+
 <VirtualHost *:80>
     ServerName ez1.lh
     ServerAlias ez1.lh
-
     DocumentRoot "/Users/ ---USER_ID--- /Documents/workspace/ez1.lh/web"
-    DirectoryIndex index.php
+    DirectoryIndex app.php
 
+    # Enabled for Dev environment
+    # LogLevel debug
+
+    # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
     <Directory "/Users/ ---USER_ID--- /Documents/workspace/ez1.lh/web">
+        # If using php configured in FastCGI mode, you might also need to add "ExecCGI" to the line below
         Options FollowSymLinks
         AllowOverride None
+        # depending on your global Apache settings, you may need to uncomment and adapt:
+        #  for Apache 2.2 and earlier:
+        #Allow from all
+        #  for Apache 2.4:
         Require all granted
     </Directory>
+
+    ## eZ Platform ENVIRONMENT variables, used for customizing app.php execution (not used by console commands)
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
     # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
-    SetEnvIf Request_URI ".*" ENVIRONMENT=dev
+    SetEnvIf Request_URI ".*" SYMFONY_ENV=dev
 
-    # Whether to use Symfony's ApcClassLoader.
-    # Possible values: 0 or 1
-    # Defaults to 0 if omitted, supported on 5.2 and higher
-    #SetEnv USE_APC_CLASSLOADER 0
-
-    # Prefix used when USE_APC_CLASSLOADER is set to 1.
-    # Use a unique prefix in order to prevent cache key conflicts
-    # with other applications also using APC.
-    # Defaults to "ezpublish" if omitted, supported on 5.2 and higher
-    #SetEnv APC_CLASSLOADER_PREFIX "ezpublish"
+    # Whether to use custom ClassLoader (autoloader) file
+    # Needs to be a valid path relative to root web/ directory
+    # Defaults to bootstrap.php.cache, or autoload.php in debug
+    #SetEnv SYMFONY_CLASSLOADER_FILE "../app/autoload.php"
 
     # Whether to use debugging.
     # Possible values: 0 or 1
-    # Defaults to 0 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
-    #SetEnv USE_DEBUGGING 0
+    # Defaults to 0 if omitted, unless SYMFONY_ENV is set to: "dev"
+    SetEnv SYMFONY_DEBUG %USE-DEBUGGING%
 
     # Whether to use Symfony's HTTP Caching.
     # Disable it if you are using an external reverse proxy (e.g. Varnish)
     # Possible values: 0 or 1
-    # Defaults to 1 if omitted, unless ENVIRONMENT is set to: "dev", supported on 5.2 and higher
-    #SetEnv USE_HTTP_CACHE 1
+    # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
+    #SetEnv SYMFONY_HTTP_CACHE 1
+
+    # Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
+    # Value must be a autoloadable cache class
+    # Defaults to to use "AppCache"
+    #SetEnv SYMFONY_HTTP_CACHE_CLASS "\Vendor\Project\MyCache"
 
     # Defines the proxies to trust.
     # Separate entries by a comma
     # Example: "proxy1.example.com,proxy2.example.org"
-    # By default, no trusted proxies are set, supported on 5.2 and higher
-    #SetEnv TRUSTED_PROXIES "%PROXY%"
+    # By default, no trusted proxies are set
+    #SetEnv SYMFONY_TRUSTED_PROXIES "%PROXY%"
 
     <IfModule mod_rewrite.c>
         RewriteEngine On
 
-        # Uncomment in FastCGI mode or when using PHP-FPM, to get basic auth working.
+        # For FastCGI mode or when using PHP-FPM, to get basic auth working.
         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-        # Needed for ci testing, remove in prod.
-        RewriteCond %{ENV:ENVIRONMENT} "behat"
+        # Needed for ci testing, you can optionally remove this.
+        RewriteCond %{ENV:SYMFONY_ENV} "behat"
         RewriteCond %{REQUEST_URI} ^/php5-fcgi(.*)
         RewriteRule . - [L]
 
-        # v1 rest API is on Legacy
-        RewriteRule ^/api/[^/]+/v1/ /index_rest.php [L]
-
-        # If using cluster, uncomment the following two lines:
-        ## For 5.4 and higher:
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index.php [L]
-        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
-        ## Versions prior to 5.4:
-        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /index_cluster.php [L]
-        #RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* /index_cluster.php [L]
+        # Cluster/streamed files rewrite rules. Enable on cluster with DFS as a binary data handler
+        #RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* /app.php [L]
 
         RewriteRule ^/var/([^/]+/)?storage/images(-versioned)?/.* - [L]
-        RewriteRule ^/var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
-        RewriteRule ^/design/[^/]+/(stylesheets|images|javascript|fonts)/.* - [L]
-        RewriteRule ^/share/icons/.* - [L]
-        RewriteRule ^/extension/[^/]+/design/[^/]+/(stylesheets|flash|images|lib|javascripts?)/.* - [L]
-        RewriteRule ^/packages/styles/.+/(stylesheets|images|javascript)/[^/]+/.* - [L]
-        RewriteRule ^/packages/styles/.+/thumbnail/.* - [L]
-        RewriteRule ^/var/storage/packages/.* - [L]
 
-        # Makes it possible to place your favicon at the root of your
-        # eZ Publish instance. It will then be served directly.
+        # Makes it possible to place your favicon at the root of your eZ Platform instance.
+        # It will then be served directly.
         RewriteRule ^/favicon\.ico - [L]
 
-        # Uncomment the line below if you want your favicon be served
-        # from the standard design. You can customize the path to
-        # favicon.ico by changing /design/standard/images/favicon\.ico
-        #RewriteRule ^/favicon\.ico /design/standard/images/favicon.ico [L]
-        RewriteRule ^/design/standard/images/favicon\.ico - [L]
+        # Uncomment the line below if you want your favicon be served from the standard design.
+        # You can customize the path to favicon.ico by bundle name and/or path.
+        #RewriteRule ^/favicon\.ico /bundles/my-bundle/images/favicon.ico [L]
 
-        # Give direct access to robots.txt for use by crawlers (Google,
-        # Bing, Spammers..)
+        # Give direct access to robots.txt for use by crawlers (Google, Bing, Spammers...)
         RewriteRule ^/robots\.txt - [L]
 
-        # Platform for Privacy Preferences Project ( P3P ) related files
-        # for Internet Explorer
+        # Platform for Privacy Preferences Project ( P3P ) related files for Internet Explorer
         # More info here : http://en.wikipedia.org/wiki/P3p
         RewriteRule ^/w3c/p3p\.xml - [L]
 
-        # Uncomment the following lines when using popup style debug in legacy
-        #RewriteRule ^/var/([^/]+/)?cache/debug\.html.* - [L]
-
-        # Following rule is needed to correctly display assets from eZ Publish5 / Symfony bundles
+        # The following rule is needed to correctly display assets from eZ Platform / Symfony bundles
         RewriteRule ^/bundles/ - [L]
 
-        # Additional Assetic rules for prod env, remember to run php ezpublish/console assetic:dump --env=prod
-        RewriteCond %{ENV:ENVIRONMENT} "prod"
-        RewriteRule ^/(css|js)/.*\.(css|js) - [L]
+        # Additional Assetic rules for environments different from dev,
+        # remember to run php app/console assetic:dump --env=prod
+        RewriteCond %{ENV:SYMFONY_ENV} !^(dev)
+        RewriteRule ^/(css|js|font)/.*\.(css|js|otf|eot|ttf|svg|woff) - [L]
 
-        # Conditions for enabling webdav and soap interfaces from legacy
-        ## Symlink files into your web folder and correct domain names to be valid server aliases
-        #RewriteCond %{HTTP_HOST} ^webdav\..*
-        #RewriteRule ^(.*) /webdav.php [L]
-        #RewriteCond %{HTTP_HOST} ^soap\..*
-        #RewriteRule ^(.*) /soap.php [L]
-
-        # For 5.x versions prior to 5.2, enable this to use dev env based on ENVIRONMENT variable set above
-        #RewriteCond %{ENV:ENVIRONMENT} "dev"
-        #RewriteRule .* /index_dev.php [L]
-
-        RewriteRule .* /index.php
+        RewriteRule .* /app.php
     </IfModule>
 
     # Everything below is optional to improve performance by forcing
@@ -332,44 +321,11 @@ Modify virtual host file based on dev environment (or use template below):
     # to suite project needs.
     <IfModule mod_expires.c>
         <LocationMatch "^/var/[^/]+/storage/images/.*">
-            # eZ Publish appends the version number to image URL (ezimage
-            # datatype) so when an image is updated, its URL changes to
+            # eZ Platform appends the version number to image URL (ezimage
+            # datatype) so when an image is updated, its URL changes too
             ExpiresActive on
             ExpiresDefault "now plus 10 years"
         </LocationMatch>
-
-        <LocationMatch "^/extension/[^/]+/design/[^/]+/(stylesheets|images|javascripts?|flash)/.*">
-            # A good optimization if you don't change your design often
-            ExpiresActive on
-            ExpiresDefault "now plus 5 days"
-        </LocationMatch>
-
-        <LocationMatch "^/extension/[^/]+/design/[^/]+/lib/.*">
-            # Libraries get a new url (version number) on updates
-            ExpiresActive on
-            ExpiresDefault "now plus 90 days"
-        </LocationMatch>
-
-        <LocationMatch "^/design/[^/]+/(stylesheets|images|javascripts?|lib|flash)/.*">
-            # Same as above for bundled eZ Publish designs
-            ExpiresActive on
-            ExpiresDefault "now plus 7 days"
-        </LocationMatch>
-
-        <LocationMatch "^/share/icons/.*">
-            # Icons as used by admin interface, barly change
-            ExpiresActive on
-            ExpiresDefault "now plus 7 days"
-        </LocationMatch>
-
-        # When ezjscore.ini/[Packer]/AppendLastModifiedTime=enabled
-        # so that file names change when source files are modified
-        #<LocationMatch "^/var/[^/]+/cache/public/.*">
-            # Force ezjscore packer js/css files to be cached 30 days
-            # at client side
-            #ExpiresActive on
-            #ExpiresDefault "now plus 30 days"
-        #</LocationMatch>
     </IfModule>
 </VirtualHost>
 {% endhighlight %}
@@ -386,25 +342,25 @@ Install required dependencies using Composer:
 composer install
 {% endhighlight %}
 
-When Composer asks you for token you must login to your GitHub account and edit your profile. Go to the `Personal access tokens` link and `Generate new token` with default settings. Be aware that token will be shown only once, so do not refresh page until you paste token into Composer prompt. This operation is performed only once when you install eZ Publish/Platform for the first time.
+When Composer asks you for token you must login to your GitHub account and edit your profile. Go to the `Personal access tokens` link and `Generate new token` with default settings. Be aware that token will be shown only once, so do not refresh page until you paste token into Composer prompt. This operation is performed only once when you install eZ Platform for the first time.
 
 Change directory permissions:
 
 {% highlight bash %}
-rm -rf ezpublish/cache/* ezpublish/logs/* ezpublish/sessions/*
-sudo chmod +a "_www allow delete,write,append,file_inherit,directory_inherit" ezpublish/{cache,logs,config,sessions} web
-sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" ezpublish/{cache,logs,config,sessions} web
+rm -rf app/cache/* app/logs/*
+sudo chmod +a "_www allow delete,write,append,file_inherit,directory_inherit" app/{cache,logs,config} web
+sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/{cache,logs,config} web
 {% endhighlight %}
 
-Install eZ Publish / Platform:
+Install eZ Platform:
 
 {% highlight bash %}
-php ezpublish/console ezplatform:install demo
+php app/console ezplatform:install clean
 {% endhighlight %}
 
-If everything goes right, you should see your page under <a href="http://ez1.lh" target="_blank">http://ez1.lh</a>.
+If everything goes right, you should be able to see your page under <a href="http://ez1.lh" target="_blank">http://ez1.lh</a>. Please note that clean install of eZ Platform doesn't include `DemoBundle` anymore.
 
-## 9. Optional: Install PHP 5.6 with opcache: ##
+## 9. Optional: Install PHP 5.6 with opcache extension: ##
 
 {% highlight bash %}
 brew install -v homebrew/php/php56
@@ -426,7 +382,7 @@ date.timezone = "Europe/Warsaw"
 
 (...)
 
-Increase `memory_limit` value for eZ Publish / Platform:
+Increase `memory_limit` value for eZ Platform:
 
 {% highlight ini %}
 memory_limit = 4G
