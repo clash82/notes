@@ -38,3 +38,9 @@ find %path% -name "%filename%"
 {% highlight bash %}
 du -hs %path%
 {% endhighlight %}
+
+## Find string in files: ##
+
+{% highlight bash %}
+grep -r %string% *
+{% endhighlight %}
