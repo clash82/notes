@@ -52,3 +52,9 @@ This issue occur when using legacy upon eZ Publish 5 and trying to execute `asse
 {% highlight bash startinline %}
 php ezpublish/console asssets:install ~/Documents/%path%/web --symlink
 {% endhighlight %}
+
+## Resetting user password via SQL command ##
+
+{% highlight mysql %}
+UPDATE `ezuser` SET `password_hash_type`='5', `password_hash`='%plan_text_password%' WHERE `email`='%user_email%'
+{% endhighlight %}
