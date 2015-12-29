@@ -193,3 +193,9 @@ git config remote.origin.url https://%username%:%password%@github.com/some/repos
 {% highlight bash %}
 git add -p
 {% endhighlight %}
+
+## Change default text editor: ##
+
+{% highlight bash %}
+git config --global core.editor "vim"
+{% endhighlight %}
