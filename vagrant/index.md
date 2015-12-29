@@ -26,3 +26,14 @@ vagrant destroy
 {% highlight bash %}
 vagrant halt
 {% endhighlight %}
+
+## Connect to MySQL in Vagrant with Sequel Pro: ##
+
+{% highlight bash %}
+SSH host: 127.0.0.1
+SSH user: vagrant
+SSH key: ~/.vagrant.d/insecureprivatekey
+SSH port: 2222
+
+default user/password: vagrant
+{% endhighlight %}
