@@ -16,6 +16,9 @@
 - name: Composer
   link: /composer/
 
+- name: Symfony 2.x
+  link: /symfony2/
+
 - name: eZ Platform (PHP)
   link: /ezplatform-php/
 
