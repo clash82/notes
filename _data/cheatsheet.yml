@@ -13,6 +13,9 @@
 - name: Linux
   link: /linux/
 
+- name: Composer
+  link: /composer/
+
 - name: eZ Platform (PHP)
   link: /ezplatform-php/
 
