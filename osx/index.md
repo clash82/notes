@@ -53,3 +53,17 @@ sudo mv %file% /usr/local/bin/%file%
 {% highlight bash %}
 ln -s %file_path% %link_path%
 {% endhighlight %}
+
+## Install git bash-autocomplete: ##
+
+{% highlight bash %}
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
+# edit `.bash_profile` file:
+vi ~/.bash_profile
+
+# add below:
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+{% endhighlight %}
