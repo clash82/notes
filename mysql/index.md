@@ -18,8 +18,13 @@ mysql -u %username% -p
 ## Change password for database: ##
 
 {% highlight mysql %}
-SET PASSWORD FOR '%username%'@'%hostname%' = PASSWORD('%new_password%');
+SET PASSWORD FOR %username%@%hostname% = PASSWORD('%new_password%');
+
+# reset root password:
+
+SET PASSWORD FOR root@localhost = PASSWORD('');
 {% endhighlight %}
+
 
 ## Import sql file from shell: ##
 
