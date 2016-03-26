@@ -199,3 +199,9 @@ git add -p
 {% highlight bash %}
 git config --global core.editor "vim"
 {% endhighlight %}
+
+## Update submodules: ##
+
+{% highlight bash %}
+git submodule update --init --recursive
+{% endhighlight %}
