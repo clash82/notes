@@ -205,3 +205,9 @@ git config --global core.editor "vim"
 {% highlight bash %}
 git submodule update --init --recursive
 {% endhighlight %}
+
+## Setup global .gitignore file
+
+{% highlight bash %}
+git config --global core.excludesfile '~/.gitignore'
+{% endhighlight %}
