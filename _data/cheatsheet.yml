@@ -4,6 +4,9 @@
 - name: MySQL
   link: /mysql/
 
+- name: Doctrine
+  link: /doctrine/
+
 - name: Vagrant
   link: /vagrant/
 
