@@ -39,3 +39,10 @@ source %filename%;
 ALTER TABLE %table_name% AUTO_INCREMENT=%value%
 {% endhighlight %}
 
+## Truncate table that has FK constraints applied on it: ##
+
+{% highlight mysql %}
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE %table_name%;
+SET FOREIGN_KEY_CHECKS = 1;
+{% endhighlight %}
