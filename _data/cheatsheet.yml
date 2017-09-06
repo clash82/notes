@@ -9,6 +9,9 @@
 
 - name: Vagrant
   link: /vagrant/
+  
+- name: Docker
+  link: /docker/
 
 - name: OS X
   link: /osx/
