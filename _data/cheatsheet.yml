@@ -42,3 +42,6 @@
 
 - name: PHP tools
   link: /php-tools/
+  
+- name: xDebug
+  link: xdebug
