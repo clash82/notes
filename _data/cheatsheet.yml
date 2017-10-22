@@ -18,6 +18,9 @@
 
 - name: Linux
   link: /linux/
+  
+- name: Windows
+  link: /windows/
 
 - name: Composer
   link: /composer/
