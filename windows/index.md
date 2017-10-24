@@ -11,3 +11,15 @@ Note: this is my private sheet which is dedicated to my common issues when worki
 - reboot computer,
 - completely remove `C:\Windows\SoftwareDistribution` folder,
 - go to the `Event viewer` (type `eventvwr` in the Run command pane) and clear logs for `Application`, `Security`, `Setup` and `System log`.
+
+## [10] Disable/enable Hyper-V without uninstalling it: ##
+
+{% highlight bash %}
+# disable
+bcdedit /set {current} hypervisorlaunchtype off
+
+# enable
+bcdedit /set {current} hypervisorlaunchtype auto
+{% endhighlight %}
+
+Reboot machine after applying changes.
