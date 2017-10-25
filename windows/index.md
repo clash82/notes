@@ -35,3 +35,16 @@ net stop "wsearch"
 {% endhighlight %}
 
 After that you can remove index file located at `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.ebd`.
+
+
+## [10] Disable SuperFetch service: ##
+
+{% highlight bash %}
+#disable
+sc config "sysmain" start=disabled
+
+# stop it right now
+net stop "sysmain"
+{% endhighlight %}
+
+After that you can remove content of `C:\Windows\Prefetch` folder.
