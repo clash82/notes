@@ -23,3 +23,15 @@ bcdedit /set {current} hypervisorlaunchtype auto
 {% endhighlight %}
 
 Reboot machine after applying changes.
+
+## [10] Disable Search Indexing service: ##
+
+{% highlight bash %}
+# disable
+sc config "wsearch" start=disabled
+
+# stop it right now
+net stop "wsearch"
+{% endhighlight %}
+
+After that you can remove index file located at `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.ebd`.
