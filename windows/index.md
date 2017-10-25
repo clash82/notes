@@ -5,9 +5,20 @@ title: Windows
 
 Note: this is my private sheet which is dedicated to my common issues when working on Windows OS. Tips listed below are recommended only for power users.
 
-## [10] Disable Windows Update service (update manually) to prevent killing my hard drive: ##
+## [10] Disable Windows Update service (to prevent killing my hard drive): ##
 
-- open `Services` window and disable `Windows Update` service (alternatively open `Task manager`, go to the `Services` tab and search for `wuauserv` item and disable it permanently),
+- disable service from the elevated console:
+
+{% highlight bash %}
+# disable
+sc config "wuauserv" start=disabled
+
+# stop it right now
+net stop "wuauserv"
+{% endhighlight %}
+
+Alternatively you can open `Services` window and disable `Windows Update` service (or open `Task manager`, go to the `Services` tab and search for `wuauserv` item and disable it permanently),
+
 - reboot computer,
 - completely remove `C:\Windows\SoftwareDistribution` folder,
 - go to the `Event viewer` (type `eventvwr` in the Run command pane) and clear logs for `Application`, `Security`, `Setup` and `System log`.
@@ -40,7 +51,7 @@ After that you can remove index file located at `C:\ProgramData\Microsoft\Search
 ## [10] Disable SuperFetch service: ##
 
 {% highlight bash %}
-#disable
+# disable
 sc config "sysmain" start=disabled
 
 # stop it right now
