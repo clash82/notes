@@ -211,3 +211,9 @@ git submodule update --init --recursive
 {% highlight bash %}
 git config --global core.excludesfile '~/.gitignore'
 {% endhighlight %}
+
+## Disable CRLF line endings (used on Windows) globally
+
+{% highlight bash %}
+git config --global core.autocrlf false
+{% endhighlight %}
