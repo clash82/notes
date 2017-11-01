@@ -206,14 +206,23 @@ git config --global core.editor "vim"
 git submodule update --init --recursive
 {% endhighlight %}
 
-## Setup global .gitignore file
+## Setup global .gitignore file: ##
 
 {% highlight bash %}
 git config --global core.excludesfile '~/.gitignore'
 {% endhighlight %}
 
-## Disable CRLF line endings (used on Windows) globally
+## Disable CRLF line endings (used on Windows) globally: ##
 
 {% highlight bash %}
 git config --global core.autocrlf false
+{% endhighlight %}
+
+## Leave file in the repo, but ignore any future changes to it: ##
+
+{% highlight bash %}
+git update-index --assume-unchanged %file%
+
+# undo
+git update-index --no-assume-unchanged %file%
 {% endhighlight %}
