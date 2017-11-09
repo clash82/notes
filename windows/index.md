@@ -47,7 +47,6 @@ net stop "wsearch"
 
 After that you can remove index file located at `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.ebd`.
 
-
 ## [10] Disable SuperFetch service: ##
 
 {% highlight bash %}
@@ -59,3 +58,14 @@ net stop "sysmain"
 {% endhighlight %}
 
 After that you can remove content of `C:\Windows\Prefetch` folder.
+
+## [ConEmu] Add `Git Bash here` to `ConEmu` in elevated mode: ##
+
+- in ConEmu press `Win+Alt+p` to open the settings tab,
+- select the `Tasks` subsection under the `Startup` node and click the `+` icon to add a new `Task`,
+- in the `Task Name` field enter `Git Bash`, leave `Task Parameters` blank and add `"C:\Program Files\Git\bin\sh.exe" --login -i -new_console:a` to the `Commands` section,
+- select the `Integration` node and enter the following under the `ConEmu Here - Explorer context menu integration` section:
+* __Menu item__: `ConEmu Here [Git Bash]`
+* __Command__: `/single /cmd {Git Bash}`
+* __Icon file__: `C:\Program Files\Git\mingw64\share\git\git-for-windows.ico`
+- click the `Register` button.
