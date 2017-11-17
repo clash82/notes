@@ -37,3 +37,11 @@ SSH port: 2222
 
 default user/password: vagrant
 {% endhighlight %}
+
+## Disable time synchronisation: ##
+
+{% highlight bash %}
+# disable machine first (vagrant halt)
+C:\Program Files\Oracle\VirtualBox\VBoxManage setextradata "%VM_NAME%" "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" 1
+# vagrant up
+{% endhighlight %}
