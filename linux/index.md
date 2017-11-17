@@ -21,6 +21,12 @@ Ctrl+B + Shift+5 = split screen
 Ctrl+B + Left/Right = move between screens
 {% endhighlight %}
 
+## [python] run dummy SMTP server for development purpose: ##
+
+{% highlight bash %}
+sudo python -m smtpd -n -c DebuggingServer localhost:25
+{% endhighlight %}
+
 ## Clear directory: ##
 
 {% highlight bash %}
