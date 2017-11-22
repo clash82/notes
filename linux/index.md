@@ -50,3 +50,10 @@ du -hs %path%
 {% highlight bash %}
 grep -r %string% *
 {% endhighlight %}
+
+## Generate SSH keys and copy to destination machine: ##
+
+{% highlight bash %}
+ssh-keygen -t rsa -b 2048
+ssh-copy-id %login%@%host%
+{% endhighlight %}
