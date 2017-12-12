@@ -32,3 +32,31 @@ php app/console server:run
 {% highlight bash %}
 php app/console config:dump-reference %reference_name%
 {% endhighlight %}
+
+## Move vendor directory to a different location: ##
+
+This is very useful if you want to speed-up your work with Symfony in Vagrant VM (move `vendor` directory inside your Vagrant Box file structure).
+
+- go to the sf2 project root directory
+- remove `vendor` directory
+- create `vendor` directory in new location (eg. `/home/vagrant/sf2_vendor`):
+
+{% highlight bash %}
+mkdir /home/vagrant/sf2_vendor
+{% endhighlight %}
+
+- symlink new directory:
+
+{% highlight bash %}
+ln -s /home/vagrant/sf2_vendor vendor
+{% endhighlight %}
+
+- run `composer install` again
+- ignore `vendor` file globally in Git:
+
+{% highlight bash %}
+git config --global core.excludesfile '~/.gitignore_global'
+vim ~/.gitignore_global
+{% endhighlight %}
+
+- optional: include new `vendor` path in PhpStorm (Settings &raquo; PHP &raquo; inlude path)
