@@ -27,33 +27,39 @@ Ctrl+B + Left/Right = move between screens
 sudo python -m smtpd -n -c DebuggingServer localhost:25
 {% endhighlight %}
 
-## Clear directory: ##
+## [bash] clear directory: ##
 
 {% highlight bash %}
 rm -rf %path%
 {% endhighlight %}
 
-## Find file: ##
+## [bash] find file: ##
 
 {% highlight bash %}
 find %path% -name "%filename%"
 {% endhighlight %}
 
-## Get size of element on disk: ##
+## [bash] get size of element on disk: ##
 
 {% highlight bash %}
 du -hs %path%
 {% endhighlight %}
 
-## Find string in files: ##
+## [bash] find string in files: ##
 
 {% highlight bash %}
 grep -r %string% *
 {% endhighlight %}
 
-## Generate SSH keys and copy to destination machine: ##
+## [bash] generate SSH keys and copy to destination machine: ##
 
 {% highlight bash %}
 ssh-keygen -t rsa -b 2048
 ssh-copy-id %login%@%host%
+{% endhighlight %}
+
+## [bash] create symbolic link: ##
+
+{% highlight bash %}
+ln -s %file_path% %link_path%
 {% endhighlight %}

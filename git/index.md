@@ -3,6 +3,33 @@ layout: default
 title: Git
 ---
 
+## Install Git bash-autocomplete: ##
+
+{% highlight bash %}
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
+# edit `.bash_profile` file:
+vi ~/.bash_profile
+
+# add below:
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+{% endhighlight %}
+
+## Add git branch name to command prompt: ##
+
+{% highlight bash %}
+# edit `.bash_progfile` file:
+vi ~/.bash_profile
+
+# add below:
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+{% endhighlight %}
+
 ## Rebase the old branch against the master branch: ##
 
 {% highlight bash %}
