@@ -10,10 +10,10 @@
         <link rel="shortcut icon" href="favicon.ico">
         <link href="/stylesheets/syntax.css" rel="stylesheet">
         <link href="/stylesheets/style.css" rel="stylesheet">
-        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
     <body role="document">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -38,17 +38,17 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">links<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">external links<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 {% for link in site.data.links %}
-                                    <li><a href="//{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+                                    <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
                     </ul>
     
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="//github.com/clash82/clash82.github.io">Hosted by GitHub</a></li>
+                        <li><a href="https://github.com/clash82/clash82.github.io" target="_blank">Hosted on GitHub</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,10 +74,10 @@
         {% endif %}
 
         <footer class="container">
-            {% if page.url == '/index.html' %}
-                &copy; 2015 <a href="//toborek.info" target="_blank"> Rafał Toborek</a> (<a href="https://github.com/clash82/clash82.github.io">GitHub</a>)
+            {% if page.url == '/' %}
+                &copy; 2015 <a href="https://toborek.info" target="_blank">Rafał Toborek</a> (<a href="https://github.com/clash82/clash82.github.io" target="_blank">GitHub</a>)
             {% else %}
-                <a href="/">&laquo; go to index</a>
+                <a href="/">&laquo; go back to the index page</a>
             {% endif %}
         </footer>
 

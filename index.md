@@ -3,7 +3,7 @@ layout: default
 title: ''
 ---
 
-Choose your destiny:
+Plat du jour:
 
 <ul>
     {% for link in site.data.cheatsheet %}
@@ -11,10 +11,10 @@ Choose your destiny:
     {% endfor %}
 </ul>
 
-Useful links:
+External links:
 
 <ul>
     {% for link in site.data.links %}
-        <li><a href="//{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+        <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
     {% endfor %}
 </ul>

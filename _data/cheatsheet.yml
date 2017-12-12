@@ -28,6 +28,15 @@
 - name: Symfony 2.x
   link: /symfony2/
 
+- name: PHP tools
+  link: /php-tools/
+
+- name: xDebug
+  link: xdebug
+
+- name: WordPress (plugin update procedure over SVN)
+  link: /wordpress-svn-update/
+
 - name: eZ Platform (PHP)
   link: /ezplatform-php/
 
@@ -42,12 +51,3 @@
 
 - name: eZ Platform (MacOS X clean install)
   link: /ezplatform-installation-osx/
-
-- name: WordPress (plugin update procedure over SVN)
-  link: /wordpress-svn-update/
-
-- name: PHP tools
-  link: /php-tools/
-  
-- name: xDebug
-  link: xdebug
