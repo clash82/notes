@@ -63,3 +63,9 @@ ssh-copy-id %login%@%host%
 {% highlight bash %}
 ln -s %file_path% %link_path%
 {% endhighlight %}
+
+## [bash] compress file with password: ##
+
+{% highlight bash %}
+zip -e %file_path% %archive_name%
+{% endhighlight %}
