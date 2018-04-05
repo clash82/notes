@@ -69,3 +69,9 @@ ln -s %file_path% %link_path%
 {% highlight bash %}
 zip -e %file_path% %archive_name%
 {% endhighlight %}
+
+## [bash] show Linux version: ##
+
+{% highlight bash %}
+lsb_release -a
+{% endhighlight %}
