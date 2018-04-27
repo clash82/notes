@@ -253,3 +253,11 @@ git update-index --assume-unchanged %file%
 # undo
 git update-index --no-assume-unchanged %file%
 {% endhighlight %}
+
+## Set default upstream branch: ##
+
+{% highlight bash %}
+# this allows to use simple version of `git pull` without specifying remote branch
+
+git branch --track master origin/master
+{% endhighlight %}
