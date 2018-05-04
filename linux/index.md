@@ -75,3 +75,9 @@ zip -e %file_path% %archive_name%
 {% highlight bash %}
 lsb_release -a
 {% endhighlight %}
+
+## [bash] keep showing only important entries from logs: ##
+
+{% highlight bash %}
+tail -f var/logs/* | grep -E 'ERROR|CRITICAL'
+{% endhighlight %}
