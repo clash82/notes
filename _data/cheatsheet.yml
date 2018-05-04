@@ -31,6 +31,9 @@
 - name: PHP tools
   link: /php-tools/
 
+- name: Java
+  link: /java/
+
 - name: xDebug
   link: xdebug
 
