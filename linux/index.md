@@ -67,7 +67,7 @@ ln -s %file_path% %link_path%
 ## [bash] compress file with password: ##
 
 {% highlight bash %}
-zip -e %file_path% %archive_name%
+zip -e %archive_name% %file_path%
 {% endhighlight %}
 
 ## [bash] show Linux version: ##
