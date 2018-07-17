@@ -59,6 +59,14 @@ net stop "sysmain"
 
 After that you can remove content of `C:\Windows\Prefetch` folder.
 
+## [10] List devices that can wake computer up: ##
+
+{% highlight bash %}
+powercfg -devicequery wake_armed
+{% endhighlight %}
+
+From here, find the devices in your Device Manager (Control Panel) and, under the "Power Management" tab, remove their ability to wake your computer up. If you have network interface cards that you want to keep Wake-on-LAN for, enable "Only wake this device if it receives a magic packet" as opposed to waking up for all traffic sent its way.
+
 ## [ConEmu] Add `Git Bash here` to `ConEmu` in elevated mode: ##
 
 - in ConEmu press `Win+Alt+p` to open the settings tab,
