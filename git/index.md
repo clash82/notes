@@ -261,3 +261,10 @@ git update-index --no-assume-unchanged %file%
 
 git branch --track master origin/master
 {% endhighlight %}
+
+## Delete remote tag: ##
+
+{% highlight bash %}
+git tag -d %tag_name%
+git push origin :refs/tags/%tag_name%
+{% endhighlight %}
