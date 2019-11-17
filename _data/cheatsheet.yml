@@ -54,3 +54,6 @@
 
 - name: eZ Platform (MacOS X clean install)
   link: /ezplatform-installation-osx/
+
+- name: Hardware
+  link: /hardware/
