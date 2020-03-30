@@ -1,1 +1,1 @@
-No, no, no... you should be <a href="http://clash82.toborek.info">here</a>.
+No, no, no... you should be <a href="https://clash82.github.io">here</a>.
