@@ -40,20 +40,17 @@
 - name: WordPress (plugin update procedure over SVN)
   link: /wordpress-svn-update/
 
-- name: eZ Platform (PHP)
+- name: "eZ Platform: PHP"
   link: /ezplatform-php/
 
-- name: eZ Platform (templates)
+- name: "eZ Platform: templates"
   link: /ezplatform-templates/
 
-- name: eZ Platform (console)
-  link: /ezplatform-console/
-
-- name: eZ Platform (known issues)
+- name: "eZ Platform: known issues"
   link: /ezplatform-issues/
 
-- name: eZ Platform (MacOS X clean install)
+- name: "eZ Platform: OSX Yosemite clean install"
   link: /ezplatform-installation-osx/
 
-- name: Hardware
+- name: Hardware tips
   link: /hardware/
