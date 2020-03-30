@@ -10,11 +10,3 @@ Plat du jour:
         <li><a href="{{ link.link }}">{{ link.name }}</a></li>
     {% endfor %}
 </ul>
-
-External links:
-
-<ul>
-    {% for link in site.data.links %}
-        <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
-    {% endfor %}
-</ul>
