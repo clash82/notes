@@ -1,1 +1,3 @@
-No, no, no... you should be <a href="https://clash82.github.io">here</a>.
+My notes, maintained with love and passion. Feel free to use it.
+
+Rafał Toborek
