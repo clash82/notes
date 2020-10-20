@@ -40,3 +40,14 @@ default user/password: vagrant
 C:\Program Files\Oracle\VirtualBox\VBoxManage setextradata "%VM_NAME%" "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" 1
 # vagrant up
 ```
+
+### [osx] Stop asking for password when mounting NFS folders
+
+Sudo edit `/etc/sudoers` file and add below:
+
+```bash
+Cmnd_Alias VAGRANT_EXPORTS_ADD = /usr/bin/tee -a /etc/exports
+Cmnd_Alias VAGRANT_NFSD = /sbin/nfsd restart
+Cmnd_Alias VAGRANT_EXPORTS_REMOVE = /usr/bin/sed -E -e /*/ d -ibak /etc/exports
+%admin ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD, VAGRANT_EXPORTS_REMOVE
+```
