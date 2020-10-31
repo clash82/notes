@@ -263,3 +263,15 @@ git branch --track master origin/master
 git tag -d %tag_name%
 git push origin :refs/tags/%tag_name%
 ```
+
+### Change commit author
+
+```bash
+git commit --author="%name% <%email%>"
+```
+
+### Change commit date
+
+```bash
+git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
+```
