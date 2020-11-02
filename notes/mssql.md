@@ -101,3 +101,23 @@ WHILE @@FETCH_STATUS = 0
 CLOSE Cur3
 DEALLOCATE Cur3
 ```
+
+### List all databases
+
+```sql
+SELECT name FROM master.sys.databases;
+```
+
+### List all tables in selected database
+
+```sql
+USE %db_name%;
+SELECT * FROM INFORMATION_SCHEMA.TABLES;
+```
+
+### Rename user
+
+```sql
+USE Master;
+ALTER LOGIN [%old_username%] WITH NAME = [%new_username%];
+```
