@@ -42,3 +42,20 @@ echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
 ```bash
 sudo mv %file% /usr/local/bin/%file%
 ```
+
+### Disable SIP (System Integrity Protection)
+
+- restart OSX
+- hold CTRL+R key to reboot into `Recovery Mode`
+- go to `Utilities` > `Terminal`
+- type `csrutil disable`
+- reboot
+
+### Disable `Your disk is almost full` notification
+
+- disable `SIP` (check solution above)
+- type in the terminal:
+
+```
+launchctl unload -w /System/Library/LaunchAgents/com.apple.diskspaced.plist
+```
