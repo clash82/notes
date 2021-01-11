@@ -1,3 +1,26 @@
+### Connect to dabase using `sqlcmd` via SSH tunnel
+
+```bash
+# enable VPN and establish new SSH connection
+ssh -fN -L 41433:%sql-host%:1433 ec2-user@%ssh-host%
+
+sqlcmd -S 127.0.0.1,41433 -U %username% -P %password% -d %db_name%
+```
+
+#### Dump database using `mssql-scripter` via SSH tunnel
+
+```bash
+# enable VPN and establish new SSH connection
+ssh -fN -L 41433:%sql-host%:1433 ec2-user@%ssh-host%
+
+mssql-scripter -S 127.0.0.1,41433 -d %db_name% -P %password% -U %username%\
+    --exclude-use-database\
+    --display-progress\
+    --exclude-extended-properties\
+    --exclude-headers\
+    --schema-and-data > ./mssql_dump.sql
+```
+
 ### Delete all tables in a database using hidden built-in feature
 
 ```sql
