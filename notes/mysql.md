@@ -4,6 +4,15 @@
 /usr/local/mysql/bin/mysqldump -u %username% --skip-add-drop-table --no-create-info --no-create-db --extended-insert=FALSE %database_name% > %filename.sql%
 ```
 
+### Dump database via SSH tunnel
+
+```bash
+# enable VPN and establish new SSH connection
+ssh -fN -L 33306:%mysql-host%:3306 ec2-user@%ssh-host%
+
+mysqldump -h 127.0.0.1 -P 33306 -u %db_user% -p --set-gtid-purged=OFF --column-statistics=0 %db_name% > %db_name%.sql
+```
+
 ### Login to shell
 
 ```bash
