@@ -76,3 +76,15 @@ lsb_release -a
 ```bash
 tail -f var/logs/* | grep -E 'ERROR|CRITICAL'
 ```
+
+### [ubuntu] enable the `universe` repository
+
+```bash
+sudo add-apt-repository universe
+```
+
+### [ubuntu] change owner of the partition
+
+```bash
+sudo chown %user%:%user% /media/%disk_label% -R
+```
