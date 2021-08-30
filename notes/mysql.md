@@ -49,3 +49,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE %table_name%;
 SET FOREIGN_KEY_CHECKS = 1;
 ```
+
+### Replace string everywhere (in all records)
+
+```sql
+UPDATE %table_name% SET `%column%` = REPLACE (`%column%`, '%replace_from%', '%replace_to%')
+```
