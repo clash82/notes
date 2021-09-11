@@ -275,3 +275,9 @@ git commit --author="%name% <%email%>"
 ```bash
 git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
 ```
+
+### Delete all merged remote branches
+
+```bash
+git remote prune origin
+```
