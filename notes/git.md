@@ -281,3 +281,9 @@ git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
 ```bash
 git remote prune origin
 ```
+
+### Use different SSH key for a specific repo only
+
+```bash
+git config --add --local core.sshCommand 'ssh -i %path_to_ssh_key%'
+```
